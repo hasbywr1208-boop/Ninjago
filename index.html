@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NINJAGO</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0a;
+    --panel:#120707;
+    --crimson:#c81e1e;
+    --crimson-dark:#7a1010;
+    --gold:#e0b25a;
+  }
+  body{ font-family:'Inter', sans-serif; background:var(--ink); }
+  .font-display{ font-family:'Bebas Neue', sans-serif; letter-spacing:0.03em; }
+  .text-outline{
+    -webkit-text-stroke: 1.5px rgba(255,255,255,0.25);
+  }
+  .card-glow:hover{ box-shadow: 0 0 0 1px var(--crimson), 0 12px 40px -12px rgba(200,30,30,0.5); }
+  .divider-red{ background: linear-gradient(90deg, var(--crimson), transparent); }
+  ::-webkit-scrollbar{ width:8px; }
+  ::-webkit-scrollbar-thumb{ background:#3a0f0f; border-radius:4px; }
+</style>
+</head>
+<body class="text-white antialiased">
+
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 bg-crimson rounded flex items-center justify-center font-display text-xl" style="background:var(--crimson)">SN</div>
+      <span class="font-display text-2xl tracking-wider">NINJA <span style="color:var(--crimson)">GO</span></span>
+    </div>
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide text-gray-300">
+      <a href="#beranda" class="text-white border-b-2 pb-1" style="border-color:var(--crimson)">BERANDA</a>
+      <a href="#karakter" class="hover:text-white transition">KARAKTER</a>
+      <a href="#dunia" class="hover:text-white transition">DUNIA</a>
+      <a href="#episode" class="hover:text-white transition">EPISODE</a>
+      <a href="#produk" class="hover:text-white transition">PRODUK</a>
+      <a href="#galeri" class="hover:text-white transition">GALERI</a>
+      <a href="#kontak" class="hover:text-white transition">KONTAK</a>
+    </nav>
+    <a href="#join" class="hidden sm:inline-flex items-center gap-2 border border-crimson text-sm font-bold tracking-wide px-4 py-2 rounded hover:bg-crimson/10 transition" style="border-color:var(--crimson)">
+      ⚔ JOIN THE NINJA
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="beranda" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+  <img src="assets/hero-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-10 items-center">
+    <!-- character cluster -->
+    <div class="grid grid-cols-3 gap-4 max-w-md">
+      <img src="assets/lloyd.png" class="rounded-xl col-span-1 translate-y-6 shadow-2xl" alt="Karakter hijau">
+      <img src="assets/kai.png" class="rounded-xl col-span-1 -translate-y-4 shadow-2xl ring-2 ring-red-500/40" alt="Karakter merah">
+      <img src="assets/cole.png" class="rounded-xl col-span-1 translate-y-8 shadow-2xl" alt="Karakter hitam">
+      <img src="assets/jay.png" class="rounded-xl col-span-1 translate-y-2 shadow-2xl" alt="Karakter biru">
+      <img src="assets/zane.png" class="rounded-xl col-span-1 -translate-y-6 shadow-2xl" alt="Karakter putih">
+      <img src="assets/nya.png" class="rounded-xl col-span-1 translate-y-4 shadow-2xl" alt="Karakter navy">
+    </div>
+
+    <!-- headline -->
+    <div>
+      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] mb-6">
+        TEMUKAN KEKUATANMU,<br>
+        <span style="color:var(--crimson)">JADILAH NINJA!</span>
+      </h1>
+      <p class="text-gray-300 text-lg max-w-md mb-8 leading-relaxed">
+        Bergabunglah dengan para ninja dalam petualangan epik melawan kekuatan jahat untuk melindungi dunia dan menjaga keseimbangan.
+      </p>
+      <a href="#dunia" class="inline-flex items-center gap-2 bg-[var(--crimson)] hover:bg-red-700 transition font-bold tracking-wide px-7 py-3.5 rounded shadow-lg shadow-red-900/40">
+        MULAI PETUALANGAN <span>›</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-5 text-gray-400">
+    <a href="#" class="hover:text-white transition text-xl">▶</a>
+    <a href="#" class="hover:text-white transition text-xl">◎</a>
+    <a href="#" class="hover:text-white transition text-xl">♪</a>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-400 animate-bounce">
+    <div class="w-6 h-10 border-2 border-gray-500 rounded-full flex items-start justify-center p-1">
+      <div class="w-1 h-2 bg-gray-400 rounded-full"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="py-24 px-6" style="background:var(--panel)">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-[2px]" style="background:var(--crimson)"></span>
+        <span class="text-sm font-bold tracking-widest" style="color:var(--crimson)">TENTANG</span>
+      </div>
+      <h2 class="font-display text-4xl sm:text-5xl mb-6">APA ITU SHADOW NINJA?</h2>
+      <p class="text-gray-400 leading-relaxed mb-8 max-w-lg">
+        Shadow Ninja adalah dunia penuh petualangan, persahabatan, dan keberanian. Ikuti kisah para ninja muda dalam menguasai elemen mereka, mengalahkan musuh, dan menjaga keseimbangan dunia.
+      </p>
+      <a href="#" class="inline-flex items-center gap-2 border border-white/20 hover:border-[var(--crimson)] hover:text-red-400 transition font-bold text-sm tracking-wide px-6 py-3 rounded">
+        PELAJARI LEBIH LANJUT <span>›</span>
+      </a>
+    </div>
+    <div class="rounded-2xl overflow-hidden shadow-2xl">
+      <img src="assets/about-city.png" alt="Kota dunia ninja" class="w-full h-full object-cover">
+    </div>
+  </div>
+</section>
+
+<!-- KARAKTER -->
+<section id="karakter" class="py-24 px-6 bg-black">
+  <div class="max-w-7xl mx-auto text-center mb-14">
+    <span class="text-sm font-bold tracking-widest" style="color:var(--crimson)">KARAKTER</span>
+    <h2 class="font-display text-4xl sm:text-5xl mt-3">KARAKTER IKONIK</h2>
+    <div class="w-16 h-[3px] mx-auto mt-4" style="background:var(--crimson)"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+    <a href="detail-kai.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
+      <img src="assets/kai.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Kai">
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
+        <p class="font-display text-xl tracking-wide">KAI</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Api 🔥</p>
+      </div>
+    </a>
+    <a href="detail-jay.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
+      <img src="assets/jay.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Jay">
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
+        <p class="font-display text-xl tracking-wide">JAY</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Petir ⚡</p>
+      </div>
+    </a>
+    <a href="detail-lloyd.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
+      <img src="assets/lloyd.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Lloyd">
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
+        <p class="font-display text-xl tracking-wide">LLOYD</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Energi 🍀</p>
+      </div>
+    </a>
+    <a href="detail-cole.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
+      <img src="assets/cole.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Cole">
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
+        <p class="font-display text-xl tracking-wide">COLE</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Bumi 🪨</p>
+      </div>
+    </a>
+    <a href="detail-zane.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
+      <img src="assets/zane.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Zane">
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
+        <p class="font-display text-xl tracking-wide">ZANE</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Es ❄️</p>
+      </div>
+    </a>
+    <a href="detail-nya.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
+      <img src="assets/nya.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Nya">
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
+        <p class="font-display text-xl tracking-wide">NYA</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Air 💧</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="text-center mt-12">
+    <a href="#" class="inline-flex items-center gap-2 border border-white/20 hover:border-[var(--crimson)] hover:text-red-400 transition font-bold text-sm tracking-wide px-6 py-3 rounded">
+      LIHAT SEMUA KARAKTER <span>›</span>
+    </a>
+  </div>
+</section>
+
+<!-- DUNIA -->
+<section id="dunia" class="py-24 px-6" style="background:var(--panel)">
+  <div class="max-w-7xl mx-auto text-center mb-14">
+    <span class="text-sm font-bold tracking-widest" style="color:var(--crimson)">DUNIA</span>
+    <h2 class="font-display text-4xl sm:text-5xl mt-3">JELAJAHI DUNIA NINJA</h2>
+    <div class="w-16 h-[3px] mx-auto mt-4" style="background:var(--crimson)"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="group relative rounded-xl overflow-hidden card-glow transition">
+      <img src="assets/ninja-city.png" class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition duration-300" alt="Kota Ninja">
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent p-4">
+        <p class="font-display text-lg tracking-wide">NINJA CITY</p>
+        <p class="text-xs text-gray-300">Kota modern penuh teknologi dan kehidupan.</p>
+      </div>
+    </div>
+    <div class="group relative rounded-xl overflow-hidden card-glow transition">
+      <img src="assets/world-monastery.png" class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition duration-300" alt="Monastery">
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent p-4">
+        <p class="font-display text-lg tracking-wide">MONASTERY OF ELEMENTS</p>
+        <p class="text-xs text-gray-300">Tempat para ninja berlatih dan menguasai elemen.</p>
+      </div>
+    </div>
+    <div class="group relative rounded-xl overflow-hidden card-glow transition">
+      <img src="assets/world-dark-island.png" class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition duration-300" alt="Dark Island">
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent p-4">
+        <p class="font-display text-lg tracking-wide">THE DARK ISLAND</p>
+        <p class="text-xs text-gray-300">Markas para penjahat dan sumber kekuatan jahat.</p>
+      </div>
+    </div>
+    <div class="group relative rounded-xl overflow-hidden card-glow transition">
+      <img src="assets/world-kingdoms.png" class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition duration-300" alt="Kingdoms">
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent p-4">
+        <p class="font-display text-lg tracking-wide">ANCIENT KINGDOMS</p>
+        <p class="text-xs text-gray-300">Kerajaan klasik dengan tradisi para ninja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="join" class="relative py-20 px-6 overflow-hidden" style="background: linear-gradient(120deg, #2a0505, #0a0202 60%);">
+  <img src="assets/cta.png" alt="" class="absolute left-4 bottom-0 h-full opacity-80 hidden md:block" style="max-height:340px; bottom:-20px;">
+  <img src="assets/cta.png" alt="" class="absolute right-4 bottom-0 h-full opacity-20 scale-x-[-1] hidden md:block" style="max-height:340px; bottom:-20px; filter:hue-rotate(90deg);">
+  <div class="relative max-w-3xl mx-auto text-center">
+    <h2 class="font-display text-4xl sm:text-5xl mb-4">SIAP UNTUK MENJADI BAGIAN DARI PETUALANGAN?</h2>
+    <p class="text-gray-300 mb-8">Tonton episode, mainkan game, dan koleksi produk ninja favoritmu!</p>
+    <a href="#" class="inline-flex items-center gap-2 bg-[var(--crimson)] hover:bg-red-700 transition font-bold tracking-wide px-8 py-4 rounded shadow-lg shadow-red-900/40">
+      ⚔ JOIN THE NINJA ⚔
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black border-t border-white/5 py-10 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded flex items-center justify-center font-display text-lg" style="background:var(--crimson)">SN</div>
+      <span class="font-display text-xl tracking-wider">NINJA <span style="color:var(--crimson)">GO</span></span>
+    </div>
+   
+    <p class="text-xs text-gray-500">© 2026 NINJAGO BY HASBY WALIY RAMADHAN.</p>
+  </div>
+</footer>
+
+</body>
+</html>
