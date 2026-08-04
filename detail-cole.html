@@ -3,50 +3,275 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detail Cole - NINJAGO</title>
+  <title>Detail COLE - NINJAGO</title>
+  <meta name="description" content="Profil lengkap COLE, ninja bumi dari dunia Ninjago. Pelajari kekuatan, latar belakang, dan perjalanan COLE.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{ --ink:#0a0a0a; --panel:#120707; --crimson:#c81e1e; --gold:#e0b25a; }
-    body{ font-family:'Inter', sans-serif; background:var(--ink); color:white; }
-    .font-display{ font-family:'Bebas Neue', sans-serif; letter-spacing:0.03em; }
+    :root {
+      --ink: #0a0a0a;
+      --panel: #0f0505;
+      --crimson: #dc2626;
+      --gold: #f59e0b;
+      --accent: #f59e0b;
+      --accent-glow: rgba(245,158,11,0.35);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--ink); color: #fff; overflow-x: hidden; }
+    ::selection { background: var(--accent); color: white; }
+    .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--ink); }
+    ::-webkit-scrollbar-thumb { background: #78350f; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scale-in {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes gradient-x {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .anim-slide-up { opacity: 0; animation: slide-up 0.7s ease forwards; }
+    .anim-scale-in { opacity: 0; animation: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+    .delay-7 { animation-delay: 0.7s; }
+
+    .glass {
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-premium {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      border-radius: 10px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--accent), #b45309);
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 24px -4px var(--accent-glow);
+    }
+    .btn-premium:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px -4px var(--accent-glow);
+    }
+    .btn-premium::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #d1d5db;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 30px -8px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .stat-card:hover {
+      border-color: rgba(245,158,11,0.3);
+      box-shadow: 0 0 25px -8px var(--accent-glow);
+      transform: translateY(-4px);
+    }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      font-size: 13px;
+      color: #d1d5db;
+      transition: all 0.3s ease;
+    }
+    .tag-pill:hover {
+      border-color: rgba(245,158,11,0.3);
+      color: var(--accent);
+      background: rgba(245,158,11,0.05);
+    }
+
+    .social-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: #6b7280; transition: all 0.3s ease; text-decoration: none;
+    }
+    .social-icon:hover {
+      color: white;
+      border-color: var(--crimson);
+      background: rgba(220,38,38,0.1);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
-<body>
-  <main class="min-h-screen px-6 py-20 bg-black">
-    <div class="max-w-6xl mx-auto">
-      <a href="index.html#karakter" class="inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-gray-300 hover:text-white transition">
-        ← Kembali ke karakter
-      </a>
+<body class="antialiased">
 
-      <div class="mt-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
-        <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-          <img src="assets/cole.png" alt="Cole" class="w-full h-[420px] object-cover">
+  <!-- HERO BANNER -->
+  <div class="relative min-h-[45vh] flex items-end overflow-hidden" style="background: linear-gradient(135deg, rgba(245,158,11,0.12) 0%, var(--ink) 100%);">
+    <!-- Decorative glow -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style="background: radial-gradient(circle, var(--accent-glow), transparent); filter: blur(100px); animation: glow-pulse 4s ease-in-out infinite;"></div>
+    <div class="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full pointer-events-none" style="background: radial-gradient(circle, var(--accent-glow), transparent); filter: blur(80px); opacity: 0.3;"></div>
+
+    <!-- Back button -->
+    <div class="absolute top-6 left-6 z-10">
+      <a href="index.html#karakter" class="inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-gray-300 hover:text-white transition-all group no-underline anim-slide-up">
+        <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-white/10 group-hover:border-white/30 group-hover:bg-white/5 transition-all">←</span>
+        <span>Kembali</span>
+      </a>
+    </div>
+
+    <!-- Gradient bottom fade -->
+    <div class="absolute inset-x-0 bottom-0 h-32" style="background: linear-gradient(to top, var(--ink), transparent);"></div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="px-6 pb-24 -mt-24 relative z-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-14 items-start">
+
+        <!-- Image -->
+        <div class="anim-scale-in delay-1">
+          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative group" style="box-shadow: 0 25px 60px -15px var(--accent-glow);">
+            <img src="assets/cole.png" alt="COLE" class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-white/10 transition-colors duration-500 pointer-events-none"></div>
+          </div>
         </div>
 
+        <!-- Info -->
         <div>
-          <span class="text-sm font-bold tracking-[0.35em]" style="color:var(--crimson)">DETAIL NINJA</span>
-          <h1 class="font-display text-4xl sm:text-5xl mt-3">COLE</h1>
-          <p class="mt-4 text-gray-400 leading-relaxed">
+          <div class="anim-slide-up delay-2">
+            <span class="text-sm font-bold tracking-[0.35em]" style="color: var(--accent)">DETAIL NINJA</span>
+            <h1 class="font-display text-5xl sm:text-7xl mt-2" style="text-shadow: 0 0 40px var(--accent-glow);">COLE</h1>
+          </div>
+
+          <p class="mt-5 text-gray-400 leading-relaxed text-lg anim-slide-up delay-3">
             Cole adalah ninja bumi yang kuat, tenang, dan sangat setia. Ia sering menjadi penyangga tim saat situasi menjadi sulit, dengan keteguhan yang membuat orang lain merasa aman.
           </p>
 
-          <div class="mt-8 rounded-2xl border border-white/10 p-6" style="background:var(--panel)">
-            <h2 class="font-display text-2xl mb-3">Kekuatan Utama</h2>
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-3 gap-3 mt-8 anim-slide-up delay-4">
+            <div class="stat-card">
+              <div class="text-3xl mb-1">🪨</div>
+              <div class="text-[11px] text-gray-500 tracking-[0.15em] font-semibold">ELEMEN BUMI</div>
+            </div>
+            <div class="stat-card">
+              <div class="text-3xl mb-1">⚔</div>
+              <div class="text-[11px] text-gray-500 tracking-[0.15em] font-semibold">PALU BUMI</div>
+            </div>
+            <div class="stat-card">
+              <div class="text-3xl mb-1">🎬</div>
+              <div class="text-[11px] text-gray-500 tracking-[0.15em] font-semibold">SEASON 1</div>
+            </div>
+          </div>
+
+          <!-- Powers Panel -->
+          <div class="mt-8 rounded-2xl glass p-6 anim-slide-up delay-5" style="box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.04);">
+            <h2 class="font-display text-2xl mb-3 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full" style="background: var(--accent); box-shadow: 0 0 12px var(--accent);"></span>
+              Kekuatan Utama
+            </h2>
             <p class="text-gray-300 leading-relaxed">
               Cole mengendalikan kekuatan bumi, dapat membentuk tameng, mengangkat bebatuan, dan mengubah medan perang menjadi tempat yang sangat sulit ditembus.
             </p>
           </div>
 
-          <div class="mt-6 flex flex-wrap gap-3">
-            <span class="px-3 py-1 rounded-full border border-white/10 text-sm text-gray-300">Elemen Bumi 🪨</span>
-            <span class="px-3 py-1 rounded-full border border-white/10 text-sm text-gray-300">Kuat</span>
-            <span class="px-3 py-1 rounded-full border border-white/10 text-sm text-gray-300">Teguh</span>
+          <!-- Tags -->
+          <div class="mt-6 flex flex-wrap gap-3 anim-slide-up delay-6">
+            <span class="tag-pill">Elemen Bumi 🪨</span>
+            <span class="tag-pill">Kuat</span>
+            <span class="tag-pill">Teguh</span>
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-8 flex flex-wrap gap-3 anim-slide-up delay-7">
+            <a href="index.html#karakter" class="btn-premium">
+              LIHAT KARAKTER LAINNYA <span>›</span>
+            </a>
           </div>
         </div>
+
       </div>
     </div>
   </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-black relative">
+    <div class="h-[2px]" style="background: linear-gradient(90deg, transparent 10%, var(--accent) 50%, transparent 90%);"></div>
+    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3 no-underline text-white">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center font-display text-sm" style="background: linear-gradient(135deg, var(--crimson), #991b1b);">SN</div>
+        <span class="font-display text-xl tracking-wider">NINJA <span style="color:var(--crimson)">GO</span></span>
+      </a>
+      <p class="text-xs text-gray-600">© 2026 NINJAGO BY HASBY WALIY RAMADHAN.</p>
+    </div>
+  </footer>
+
 </body>
 </html>

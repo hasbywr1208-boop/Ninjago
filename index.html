@@ -1,245 +1,896 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NINJAGO</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#0a0a0a;
-    --panel:#120707;
-    --crimson:#c81e1e;
-    --crimson-dark:#7a1010;
-    --gold:#e0b25a;
-  }
-  body{ font-family:'Inter', sans-serif; background:var(--ink); }
-  .font-display{ font-family:'Bebas Neue', sans-serif; letter-spacing:0.03em; }
-  .text-outline{
-    -webkit-text-stroke: 1.5px rgba(255,255,255,0.25);
-  }
-  .card-glow:hover{ box-shadow: 0 0 0 1px var(--crimson), 0 12px 40px -12px rgba(200,30,30,0.5); }
-  .divider-red{ background: linear-gradient(90deg, var(--crimson), transparent); }
-  ::-webkit-scrollbar{ width:8px; }
-  ::-webkit-scrollbar-thumb{ background:#3a0f0f; border-radius:4px; }
-</style>
-</head>
-<body class="text-white antialiased">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NINJAGO — Explore the Legacy of the Ninja</title>
+  <meta name="description" content="Explore detailed profiles of every Ninjago character, their elemental powers, stories, and unforgettable journeys throughout the series.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ==================== VARIABLES ==================== */
+    :root {
+      --ink: #0a0a0a;
+      --panel: #0f0505;
+      --surface: #1a0a0a;
+      --crimson: #dc2626;
+      --crimson-dark: #991b1b;
+      --gold: #f59e0b;
+      --kai: #ef4444;
+      --jay: #60a5fa;
+      --lloyd: #4ade80;
+      --cole: #f59e0b;
+      --zane: #22d3ee;
+      --nya: #a78bfa;
+    }
 
-<!-- NAVBAR -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/5">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-9 bg-crimson rounded flex items-center justify-center font-display text-xl" style="background:var(--crimson)">SN</div>
-      <span class="font-display text-2xl tracking-wider">NINJA <span style="color:var(--crimson)">GO</span></span>
-    </div>
-    <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide text-gray-300">
-      <a href="#beranda" class="text-white border-b-2 pb-1" style="border-color:var(--crimson)">BERANDA</a>
-      <a href="#karakter" class="hover:text-white transition">KARAKTER</a>
-      <a href="#dunia" class="hover:text-white transition">DUNIA</a>
-      <a href="#episode" class="hover:text-white transition">EPISODE</a>
-      <a href="#produk" class="hover:text-white transition">PRODUK</a>
-      <a href="#galeri" class="hover:text-white transition">GALERI</a>
-      <a href="#kontak" class="hover:text-white transition">KONTAK</a>
-    </nav>
-    <a href="#join" class="hidden sm:inline-flex items-center gap-2 border border-crimson text-sm font-bold tracking-wide px-4 py-2 rounded hover:bg-crimson/10 transition" style="border-color:var(--crimson)">
-      ⚔ JOIN THE NINJA
+    /* ==================== BASE ==================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ink);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--crimson); color: white; }
+    .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; }
+
+    /* ==================== SCROLLBAR ==================== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--ink); }
+    ::-webkit-scrollbar-thumb { background: var(--crimson-dark); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--crimson); }
+
+    /* ==================== KEYFRAMES ==================== */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes ember-rise {
+      0% { opacity: 0; transform: translateY(0) scale(0.5) rotate(0deg); }
+      10% { opacity: 1; }
+      90% { opacity: 0.2; }
+      100% { opacity: 0; transform: translateY(-100vh) scale(0) rotate(720deg); }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { text-shadow: 0 0 20px rgba(220,38,38,0.3), 0 0 40px rgba(220,38,38,0.1); }
+      50% { text-shadow: 0 0 40px rgba(220,38,38,0.6), 0 0 80px rgba(220,38,38,0.2); }
+    }
+    @keyframes gradient-x {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+    @keyframes scale-in {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes border-glow {
+      0%, 100% { border-color: rgba(255,255,255,0.06); }
+      50% { border-color: rgba(220,38,38,0.2); }
+    }
+
+    /* ==================== GRADIENT TEXT ==================== */
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 30%, var(--crimson) 70%, var(--gold));
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-x 4s ease infinite;
+    }
+
+    /* ==================== GLASS ==================== */
+    .glass {
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* ==================== SCROLL REVEAL ==================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-stagger.active > *:nth-child(1) { transition-delay: 0.0s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.active > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.active > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.active > *:nth-child(4) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.active > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.active > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
+    /* ==================== CHARACTER CARDS ==================== */
+    .char-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s ease,
+                  border-color 0.4s ease;
+    }
+    .char-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 25px 60px -15px var(--glow, rgba(220,38,38,0.3));
+      border-color: var(--accent, rgba(255,255,255,0.15));
+    }
+    .char-card .char-name {
+      transition: letter-spacing 0.3s ease;
+    }
+    .char-card:hover .char-name {
+      letter-spacing: 0.15em;
+    }
+
+    /* ==================== EMBER PARTICLES ==================== */
+    .ember {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--crimson);
+      border-radius: 50%;
+      animation: ember-rise linear infinite;
+      pointer-events: none;
+      box-shadow: 0 0 6px 2px rgba(220,38,38,0.5);
+    }
+
+    /* ==================== SECTION DIVIDER ==================== */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+      opacity: 0.3;
+    }
+
+    /* ==================== PREMIUM BUTTON ==================== */
+    .btn-premium {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-size: 14px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--crimson), #b91c1c);
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 24px -4px rgba(220,38,38,0.4);
+    }
+    .btn-premium:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px -4px rgba(220,38,38,0.6);
+    }
+    .btn-premium::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    /* ==================== OUTLINE BUTTON ==================== */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #d1d5db;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-outline:hover {
+      border-color: var(--crimson);
+      color: #fca5a5;
+      box-shadow: 0 0 30px -8px rgba(220,38,38,0.3);
+      transform: translateY(-2px);
+    }
+
+    /* ==================== WORLD CARDS ==================== */
+    .world-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.5s ease,
+                  border-color 0.5s ease;
+    }
+    .world-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 60px -15px rgba(220,38,38,0.2);
+      border-color: rgba(220,38,38,0.15);
+    }
+    .world-card img {
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .world-card:hover img {
+      transform: scale(1.1);
+    }
+    .world-card .card-content {
+      transition: transform 0.4s ease;
+    }
+    .world-card:hover .card-content {
+      transform: translateY(-6px);
+    }
+    .scan-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ==================== STAT ITEMS ==================== */
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      line-height: 1;
+      background: linear-gradient(135deg, #fff, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ==================== NAVBAR ==================== */
+    .navbar-scrolled {
+      background: rgba(10, 10, 10, 0.95) !important;
+      border-bottom-color: rgba(220, 38, 38, 0.1) !important;
+    }
+    .navbar-scrolled .nav-inner {
+      padding-top: 12px !important;
+      padding-bottom: 12px !important;
+    }
+    .nav-link-line {
+      position: relative;
+    }
+    .nav-link-line::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--crimson);
+      transition: width 0.3s ease;
+    }
+    .nav-link-line:hover::after,
+    .nav-link-line.active::after {
+      width: 100%;
+    }
+
+    /* ==================== MOBILE MENU ==================== */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(24px);
+      z-index: 100;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 100px 40px 40px;
+      border-left: 1px solid rgba(255,255,255,0.05);
+    }
+    .mobile-nav.open { right: 0; }
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 101;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ==================== HERO ANIMATIONS ==================== */
+    .hero-char {
+      opacity: 0;
+      animation: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-char:nth-child(1) { animation-delay: 0.1s; }
+    .hero-char:nth-child(2) { animation-delay: 0.2s; }
+    .hero-char:nth-child(3) { animation-delay: 0.3s; }
+    .hero-char:nth-child(4) { animation-delay: 0.4s; }
+    .hero-char:nth-child(5) { animation-delay: 0.5s; }
+    .hero-char:nth-child(6) { animation-delay: 0.6s; }
+
+    .hero-text > * {
+      opacity: 0;
+      animation: slide-up 0.7s ease forwards;
+    }
+    .hero-text > *:nth-child(1) { animation-delay: 0.3s; }
+    .hero-text > *:nth-child(2) { animation-delay: 0.5s; }
+    .hero-text > *:nth-child(3) { animation-delay: 0.7s; }
+    .hero-text > *:nth-child(4) { animation-delay: 0.9s; }
+
+    /* ==================== FOOTER SOCIAL ==================== */
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover {
+      color: white;
+      border-color: var(--crimson);
+      background: rgba(220,38,38,0.1);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- MOBILE OVERLAY -->
+<div id="mobileOverlay" class="mobile-overlay"></div>
+
+<!-- MOBILE NAV -->
+<nav id="mobileNav" class="mobile-nav">
+  <div class="flex flex-col gap-1">
+    <a href="#beranda" class="mobile-link block py-3 text-lg font-semibold tracking-wide text-gray-300 hover:text-white hover:pl-2 transition-all">BERANDA</a>
+    <a href="#karakter" class="mobile-link block py-3 text-lg font-semibold tracking-wide text-gray-300 hover:text-white hover:pl-2 transition-all">KARAKTER</a>
+    <a href="#dunia" class="mobile-link block py-3 text-lg font-semibold tracking-wide text-gray-300 hover:text-white hover:pl-2 transition-all">DUNIA</a>
+    <a href="#join" class="mobile-link block py-3 text-lg font-semibold tracking-wide text-gray-300 hover:text-white hover:pl-2 transition-all">KONTAK</a>
+    <div class="h-px bg-white/10 my-4"></div>
+    <a href="#join" class="btn-premium text-center justify-center text-sm mt-2">⚔ JOIN THE NINJA</a>
+  </div>
+</nav>
+
+<!-- ==================== NAVBAR ==================== -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="background: rgba(0,0,0,0.2); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.04);">
+  <div class="nav-inner max-w-7xl mx-auto px-6 py-5 flex items-center justify-between transition-all duration-500">
+    <a href="#beranda" class="flex items-center gap-3 group no-underline text-white">
+      <div class="w-10 h-10 rounded-lg flex items-center justify-center font-display text-xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
+           style="background: linear-gradient(135deg, var(--crimson), #991b1b); box-shadow: 0 0 24px rgba(220,38,38,0.3);">
+        SN
+      </div>
+      <span class="font-display text-2xl tracking-wider">
+        NINJA <span style="color:var(--crimson)">GO</span>
+      </span>
     </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide text-gray-400">
+      <a href="#beranda" class="nav-link nav-link-line active text-white no-underline transition">BERANDA</a>
+      <a href="#karakter" class="nav-link nav-link-line no-underline hover:text-white transition">KARAKTER</a>
+      <a href="#dunia" class="nav-link nav-link-line no-underline hover:text-white transition">DUNIA</a>
+      <a href="#join" class="nav-link nav-link-line no-underline hover:text-white transition">KONTAK</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="#join" class="hidden sm:inline-flex btn-outline text-sm no-underline">
+        ⚔ JOIN THE NINJA
+      </a>
+      <button id="hamburgerBtn" class="hamburger lg:hidden" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<!-- HERO -->
+<!-- ==================== HERO ==================== -->
 <section id="beranda" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-  <img src="assets/hero-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover">
-  <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent"></div>
+  <!-- Background layers -->
+  <img src="assets/hero-bg.png" alt="" class="absolute inset-0 w-full h-full object-cover" style="filter: brightness(0.6) saturate(1.1);">
+  <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-black/20"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-transparent to-transparent"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-10 items-center">
-    <!-- character cluster -->
-    <div class="grid grid-cols-3 gap-4 max-w-md">
-      <img src="assets/lloyd.png" class="rounded-xl col-span-1 translate-y-6 shadow-2xl" alt="Karakter hijau">
-      <img src="assets/kai.png" class="rounded-xl col-span-1 -translate-y-4 shadow-2xl ring-2 ring-red-500/40" alt="Karakter merah">
-      <img src="assets/cole.png" class="rounded-xl col-span-1 translate-y-8 shadow-2xl" alt="Karakter hitam">
-      <img src="assets/jay.png" class="rounded-xl col-span-1 translate-y-2 shadow-2xl" alt="Karakter biru">
-      <img src="assets/zane.png" class="rounded-xl col-span-1 -translate-y-6 shadow-2xl" alt="Karakter putih">
-      <img src="assets/nya.png" class="rounded-xl col-span-1 translate-y-4 shadow-2xl" alt="Karakter navy">
+  <!-- Ember particles -->
+  <div id="particles" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
+    <!-- Character cluster -->
+    <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-md mx-auto lg:mx-0 order-2 lg:order-1">
+      <div class="hero-char rounded-2xl overflow-hidden translate-y-6 shadow-2xl border border-white/10 hover:border-green-400/30 transition-all duration-500 hover:shadow-green-500/20 hover:shadow-2xl">
+        <img src="assets/lloyd.png" class="w-full h-full object-cover" alt="Lloyd — Ninja Energi">
+      </div>
+      <div class="hero-char rounded-2xl overflow-hidden -translate-y-4 shadow-2xl border-2 border-red-500/30 hover:border-red-400/60 transition-all duration-500" style="box-shadow: 0 8px 40px rgba(239,68,68,0.15);">
+        <img src="assets/kai.png" class="w-full h-full object-cover" alt="Kai — Ninja Api">
+      </div>
+      <div class="hero-char rounded-2xl overflow-hidden translate-y-8 shadow-2xl border border-white/10 hover:border-amber-400/30 transition-all duration-500 hover:shadow-amber-500/20 hover:shadow-2xl">
+        <img src="assets/cole.png" class="w-full h-full object-cover" alt="Cole — Ninja Bumi">
+      </div>
+      <div class="hero-char rounded-2xl overflow-hidden translate-y-2 shadow-2xl border border-white/10 hover:border-blue-400/30 transition-all duration-500 hover:shadow-blue-500/20 hover:shadow-2xl">
+        <img src="assets/jay.png" class="w-full h-full object-cover" alt="Jay — Ninja Petir">
+      </div>
+      <div class="hero-char rounded-2xl overflow-hidden -translate-y-6 shadow-2xl border border-white/10 hover:border-cyan-400/30 transition-all duration-500 hover:shadow-cyan-500/20 hover:shadow-2xl">
+        <img src="assets/zane.png" class="w-full h-full object-cover" alt="Zane — Ninja Es">
+      </div>
+      <div class="hero-char rounded-2xl overflow-hidden translate-y-4 shadow-2xl border border-white/10 hover:border-violet-400/30 transition-all duration-500 hover:shadow-violet-500/20 hover:shadow-2xl">
+        <img src="assets/nya.png" class="w-full h-full object-cover" alt="Nya — Ninja Air">
+      </div>
     </div>
 
-    <!-- headline -->
-    <div>
-      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] mb-6">
-        Explore the Legacy ,<br>
-        <span style="color:var(--crimson)">of the Ninja</span>
+    <!-- Headline -->
+    <div class="hero-text order-1 lg:order-2">
+      <h1 class="font-display text-5xl sm:text-6xl lg:text-8xl leading-[0.9] mb-6">
+        <span class="gradient-text">Explore the Legacy</span><br>
+        <span style="color:var(--crimson); animation: glow-pulse 3s ease-in-out infinite;">of the Ninja</span>
       </h1>
       <p class="text-gray-300 text-lg max-w-md mb-8 leading-relaxed">
         Explore detailed profiles of every Ninjago character, their elemental powers, stories, and unforgettable journeys throughout the series.
       </p>
-      <a href="#dunia" class="inline-flex items-center gap-2 bg-[var(--crimson)] hover:bg-red-700 transition font-bold tracking-wide px-7 py-3.5 rounded shadow-lg shadow-red-900/40">
-        LEARN MORE <span>›</span>
+      <a href="#karakter" class="btn-premium text-base">
+        EXPLORE CHARACTERS <span class="text-lg">›</span>
       </a>
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-4 mt-12 max-w-sm">
+        <div class="text-center">
+          <div class="stat-number">6</div>
+          <div class="text-[11px] text-gray-500 tracking-[0.2em] font-semibold mt-1">NINJA</div>
+        </div>
+        <div class="text-center">
+          <div class="stat-number">4</div>
+          <div class="text-[11px] text-gray-500 tracking-[0.2em] font-semibold mt-1">REALMS</div>
+        </div>
+        <div class="text-center">
+          <div class="stat-number">16+</div>
+          <div class="text-[11px] text-gray-500 tracking-[0.2em] font-semibold mt-1">SEASONS</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-5 text-gray-400">
-    <a href="#" class="hover:text-white transition text-xl">▶</a>
-    <a href="#" class="hover:text-white transition text-xl">◎</a>
-    <a href="#" class="hover:text-white transition text-xl">♪</a>
-  </div>
-
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-400 animate-bounce">
-    <div class="w-6 h-10 border-2 border-gray-500 rounded-full flex items-start justify-center p-1">
-      <div class="w-1 h-2 bg-gray-400 rounded-full"></div>
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style="opacity:0; animation: fade-in 1s ease 1.5s forwards;">
+    <span class="text-[10px] tracking-[0.35em] text-gray-600 font-semibold">SCROLL</span>
+    <div class="w-5 h-9 border-2 border-gray-700 rounded-full flex items-start justify-center p-1.5">
+      <div class="w-1 h-2 bg-gray-500 rounded-full animate-bounce"></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="py-24 px-6" style="background:var(--panel)">
-  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
-    <div>
-      <div class="flex items-center gap-3 mb-4">
-        <span class="w-8 h-[2px]" style="background:var(--crimson)"></span>
-        <span class="text-sm font-bold tracking-widest" style="color:var(--crimson)">TENTANG</span>
+<div class="section-divider"></div>
+
+<!-- ==================== ABOUT ==================== -->
+<section class="py-28 px-6 relative overflow-hidden" style="background: var(--panel);">
+  <!-- Decorative ambient glow -->
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(220,38,38,0.04), transparent); filter: blur(100px);"></div>
+  <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(245,158,11,0.03), transparent); filter: blur(80px);"></div>
+
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div class="reveal">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="w-10 h-[2px] rounded-full" style="background: linear-gradient(90deg, var(--crimson), transparent)"></span>
+        <span class="text-sm font-bold tracking-[0.3em]" style="color:var(--crimson)">TENTANG</span>
       </div>
-      <h2 class="font-display text-4xl sm:text-5xl mb-6">APA ITU NINJAGO?</h2>
-      <p class="text-gray-400 leading-relaxed mb-8 max-w-lg">
+      <h2 class="font-display text-4xl sm:text-6xl mb-6">
+        APA ITU <span style="color:var(--crimson)">NINJAGO</span>?
+      </h2>
+      <p class="text-gray-400 leading-relaxed mb-8 max-w-lg text-lg">
         Ninjago is a fan-made website dedicated to providing detailed information about the world of Ninjago. Explore character profiles, elemental powers, backgrounds, and interesting facts, all organized in one place for fans to discover.
       </p>
-      <a href="#" class="inline-flex items-center gap-2 border border-white/20 hover:border-[var(--crimson)] hover:text-red-400 transition font-bold text-sm tracking-wide px-6 py-3 rounded">
+      <a href="#karakter" class="btn-outline">
         PELAJARI LEBIH LANJUT <span>›</span>
       </a>
     </div>
-    <div class="rounded-2xl overflow-hidden shadow-2xl">
-      <img src="assets/about-city.png" alt="Kota dunia ninja" class="w-full h-full object-cover">
+    <div class="reveal" style="transition-delay: 0.2s;">
+      <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/5 hover:border-red-500/20 transition-all duration-700 group relative">
+        <img src="assets/about-city.png" alt="Kota dunia ninja" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--panel)] via-transparent to-transparent opacity-50"></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- KARAKTER -->
-<section id="karakter" class="py-24 px-6 bg-black">
-  <div class="max-w-7xl mx-auto text-center mb-14">
-    <span class="text-sm font-bold tracking-widest" style="color:var(--crimson)">KARAKTER</span>
-    <h2 class="font-display text-4xl sm:text-5xl mt-3">KARAKTER IKONIK</h2>
-    <div class="w-16 h-[3px] mx-auto mt-4" style="background:var(--crimson)"></div>
+<div class="section-divider"></div>
+
+<!-- ==================== KARAKTER ==================== -->
+<section id="karakter" class="py-28 px-6 bg-black relative overflow-hidden">
+  <!-- Decorative ambient -->
+  <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(220,38,38,0.04), transparent); filter: blur(100px);"></div>
+  <div class="absolute top-0 right-0 w-[350px] h-[350px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(245,158,11,0.03), transparent); filter: blur(80px);"></div>
+
+  <div class="max-w-7xl mx-auto text-center mb-16 reveal">
+    <span class="text-sm font-bold tracking-[0.3em]" style="color:var(--crimson)">KARAKTER</span>
+    <h2 class="font-display text-4xl sm:text-6xl mt-3">KARAKTER <span class="gradient-text">IKONIK</span></h2>
+    <div class="w-20 h-[3px] mx-auto mt-5 rounded-full" style="background: linear-gradient(90deg, transparent, var(--crimson), transparent)"></div>
+    <p class="text-gray-500 mt-4 max-w-md mx-auto">Temui para ninja legendaris dengan kekuatan elemen unik mereka</p>
   </div>
 
-  <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-    <a href="detail-kai.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
-      <img src="assets/kai.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Kai">
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
-        <p class="font-display text-xl tracking-wide">KAI</p>
-        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Api 🔥</p>
+  <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 reveal-stagger">
+
+    <!-- Kai -->
+    <a href="detail-kai.html" class="char-card group block no-underline text-white" style="--accent: var(--kai); --glow: rgba(239,68,68,0.3);">
+      <img src="assets/kai.png" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110" alt="Kai">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-4">
+        <p class="font-display text-2xl tracking-wider char-name" style="color: var(--kai);">KAI</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1.5 mt-1">
+          <span class="w-2 h-2 rounded-full inline-block" style="background: var(--kai); box-shadow: 0 0 8px var(--kai);"></span>
+          Elemen Api 🔥
+        </p>
       </div>
     </a>
-    <a href="detail-jay.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
-      <img src="assets/jay.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Jay">
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
-        <p class="font-display text-xl tracking-wide">JAY</p>
-        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Petir ⚡</p>
+
+    <!-- Jay -->
+    <a href="detail-jay.html" class="char-card group block no-underline text-white" style="--accent: var(--jay); --glow: rgba(96,165,250,0.3);">
+      <img src="assets/jay.png" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110" alt="Jay">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-4">
+        <p class="font-display text-2xl tracking-wider char-name" style="color: var(--jay);">JAY</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1.5 mt-1">
+          <span class="w-2 h-2 rounded-full inline-block" style="background: var(--jay); box-shadow: 0 0 8px var(--jay);"></span>
+          Elemen Petir ⚡
+        </p>
       </div>
     </a>
-    <a href="detail-lloyd.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
-      <img src="assets/lloyd.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Lloyd">
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
-        <p class="font-display text-xl tracking-wide">LLOYD</p>
-        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Energi 🍀</p>
+
+    <!-- Lloyd -->
+    <a href="detail-lloyd.html" class="char-card group block no-underline text-white" style="--accent: var(--lloyd); --glow: rgba(74,222,128,0.3);">
+      <img src="assets/lloyd.png" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110" alt="Lloyd">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-4">
+        <p class="font-display text-2xl tracking-wider char-name" style="color: var(--lloyd);">LLOYD</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1.5 mt-1">
+          <span class="w-2 h-2 rounded-full inline-block" style="background: var(--lloyd); box-shadow: 0 0 8px var(--lloyd);"></span>
+          Elemen Energi 🍀
+        </p>
       </div>
     </a>
-    <a href="detail-cole.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
-      <img src="assets/cole.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Cole">
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
-        <p class="font-display text-xl tracking-wide">COLE</p>
-        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Bumi 🪨</p>
+
+    <!-- Cole -->
+    <a href="detail-cole.html" class="char-card group block no-underline text-white" style="--accent: var(--cole); --glow: rgba(245,158,11,0.3);">
+      <img src="assets/cole.png" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110" alt="Cole">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-4">
+        <p class="font-display text-2xl tracking-wider char-name" style="color: var(--cole);">COLE</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1.5 mt-1">
+          <span class="w-2 h-2 rounded-full inline-block" style="background: var(--cole); box-shadow: 0 0 8px var(--cole);"></span>
+          Elemen Bumi 🪨
+        </p>
       </div>
     </a>
-    <a href="detail-zane.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
-      <img src="assets/zane.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Zane">
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
-        <p class="font-display text-xl tracking-wide">ZANE</p>
-        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Es ❄️</p>
+
+    <!-- Zane -->
+    <a href="detail-zane.html" class="char-card group block no-underline text-white" style="--accent: var(--zane); --glow: rgba(34,211,238,0.3);">
+      <img src="assets/zane.png" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110" alt="Zane">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-4">
+        <p class="font-display text-2xl tracking-wider char-name" style="color: var(--zane);">ZANE</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1.5 mt-1">
+          <span class="w-2 h-2 rounded-full inline-block" style="background: var(--zane); box-shadow: 0 0 8px var(--zane);"></span>
+          Elemen Es ❄️
+        </p>
       </div>
     </a>
-    <a href="detail-nya.html" class="group block relative rounded-xl overflow-hidden card-glow transition">
-      <img src="assets/nya.png" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-300" alt="Nya">
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-3">
-        <p class="font-display text-xl tracking-wide">NYA</p>
-        <p class="text-xs text-gray-300 flex items-center gap-1">Elemen Air 💧</p>
+
+    <!-- Nya -->
+    <a href="detail-nya.html" class="char-card group block no-underline text-white" style="--accent: var(--nya); --glow: rgba(167,139,250,0.3);">
+      <img src="assets/nya.png" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110" alt="Nya">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-4">
+        <p class="font-display text-2xl tracking-wider char-name" style="color: var(--nya);">NYA</p>
+        <p class="text-xs text-gray-300 flex items-center gap-1.5 mt-1">
+          <span class="w-2 h-2 rounded-full inline-block" style="background: var(--nya); box-shadow: 0 0 8px var(--nya);"></span>
+          Elemen Air 💧
+        </p>
       </div>
     </a>
+
   </div>
 
-  <div class="text-center mt-12">
-    <a href="#" class="inline-flex items-center gap-2 border border-white/20 hover:border-[var(--crimson)] hover:text-red-400 transition font-bold text-sm tracking-wide px-6 py-3 rounded">
+  <div class="text-center mt-14 reveal">
+    <a href="#" class="btn-outline">
       LIHAT SEMUA KARAKTER <span>›</span>
     </a>
   </div>
 </section>
 
-<!-- DUNIA -->
-<section id="dunia" class="py-24 px-6" style="background:var(--panel)">
-  <div class="max-w-7xl mx-auto text-center mb-14">
-    <span class="text-sm font-bold tracking-widest" style="color:var(--crimson)">DUNIA</span>
-    <h2 class="font-display text-4xl sm:text-5xl mt-3">Discover the Ninjago Universe</h2>
-    <div class="w-16 h-[3px] mx-auto mt-4" style="background:var(--crimson)"></div>
+<div class="section-divider"></div>
+
+<!-- ==================== DUNIA ==================== -->
+<section id="dunia" class="py-28 px-6 relative overflow-hidden" style="background: var(--panel);">
+  <!-- Ambient glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(220,38,38,0.03), transparent); filter: blur(120px);"></div>
+
+  <div class="max-w-7xl mx-auto text-center mb-16 reveal">
+    <span class="text-sm font-bold tracking-[0.3em]" style="color:var(--crimson)">DUNIA</span>
+    <h2 class="font-display text-4xl sm:text-6xl mt-3">Discover the <span class="gradient-text">Ninjago Universe</span></h2>
+    <div class="w-20 h-[3px] mx-auto mt-5 rounded-full" style="background: linear-gradient(90deg, transparent, var(--crimson), transparent)"></div>
   </div>
 
-  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    <div class="group relative rounded-xl overflow-hidden card-glow transition">
-      <img src="assets/ninja-city.png" class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition duration-300" alt="Kota Ninja">
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent p-4">
-        <p class="font-display text-lg tracking-wide">NINJA CITY</p>
-        <p class="text-xs text-gray-300">Kota modern penuh teknologi dan kehidupan.</p>
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 reveal-stagger">
+
+    <div class="world-card scan-line group">
+      <img src="assets/ninja-city.png" class="w-full aspect-[3/4] object-cover" alt="Kota Ninja">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-5 card-content relative z-10">
+        <div class="w-8 h-[2px] mb-3 rounded-full" style="background: var(--crimson)"></div>
+        <p class="font-display text-xl tracking-wider">NINJA CITY</p>
+        <p class="text-sm text-gray-300 mt-2 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">Kota modern penuh teknologi dan kehidupan.</p>
       </div>
     </div>
-    <div class="group relative rounded-xl overflow-hidden card-glow transition">
-      <img src="assets/world-monastery.png" class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition duration-300" alt="Monastery">
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent p-4">
-        <p class="font-display text-lg tracking-wide">MONASTERY OF ELEMENTS</p>
-        <p class="text-xs text-gray-300">Tempat para ninja berlatih dan menguasai elemen.</p>
+
+    <div class="world-card scan-line group">
+      <img src="assets/world-monastery.png" class="w-full aspect-[3/4] object-cover" alt="Monastery of Elements">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-5 card-content relative z-10">
+        <div class="w-8 h-[2px] mb-3 rounded-full" style="background: var(--gold)"></div>
+        <p class="font-display text-xl tracking-wider">MONASTERY OF ELEMENTS</p>
+        <p class="text-sm text-gray-300 mt-2 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">Tempat para ninja berlatih dan menguasai elemen.</p>
       </div>
     </div>
-    <div class="group relative rounded-xl overflow-hidden card-glow transition">
-      <img src="assets/world-dark-island.png" class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition duration-300" alt="Dark Island">
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent p-4">
-        <p class="font-display text-lg tracking-wide">THE DARK ISLAND</p>
-        <p class="text-xs text-gray-300">Markas para penjahat dan sumber kekuatan jahat.</p>
+
+    <div class="world-card scan-line group">
+      <img src="assets/world-dark-island.png" class="w-full aspect-[3/4] object-cover" alt="The Dark Island">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-5 card-content relative z-10">
+        <div class="w-8 h-[2px] mb-3 rounded-full" style="background: #a855f7;"></div>
+        <p class="font-display text-xl tracking-wider">THE DARK ISLAND</p>
+        <p class="text-sm text-gray-300 mt-2 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">Markas para penjahat dan sumber kekuatan jahat.</p>
       </div>
     </div>
-    <div class="group relative rounded-xl overflow-hidden card-glow transition">
-      <img src="assets/world-kingdoms.png" class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition duration-300" alt="Kingdoms">
-      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent p-4">
-        <p class="font-display text-lg tracking-wide">ANCIENT KINGDOMS</p>
-        <p class="text-xs text-gray-300">Kerajaan klasik dengan tradisi para ninja.</p>
+
+    <div class="world-card scan-line group">
+      <img src="assets/world-kingdoms.png" class="w-full aspect-[3/4] object-cover" alt="Ancient Kingdoms">
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-5 card-content relative z-10">
+        <div class="w-8 h-[2px] mb-3 rounded-full" style="background: var(--zane);"></div>
+        <p class="font-display text-xl tracking-wider">ANCIENT KINGDOMS</p>
+        <p class="text-sm text-gray-300 mt-2 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">Kerajaan klasik dengan tradisi para ninja.</p>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- CTA -->
-<section id="join" class="relative py-20 px-6 overflow-hidden" style="background: linear-gradient(120deg, #2a0505, #0a0202 60%);">
-  <img src="assets/cta.png" alt="" class="absolute left-4 bottom-0 h-full opacity-80 hidden md:block" style="max-height:340px; bottom:-20px;">
-  <img src="assets/cta.png" alt="" class="absolute right-4 bottom-0 h-full opacity-20 scale-x-[-1] hidden md:block" style="max-height:340px; bottom:-20px; filter:hue-rotate(90deg);">
-  <div class="relative max-w-3xl mx-auto text-center">
-    <h2 class="font-display text-4xl sm:text-5xl mb-4">Discover More About Ninjago</h2>
-    <p class="text-gray-300 mb-8">Learn about the heroes, villains, dragons, realms, and stories that make the Ninjago universe unforgettable.</p>
-    <a href="#" class="inline-flex items-center gap-2 bg-[var(--crimson)] hover:bg-red-700 transition font-bold tracking-wide px-8 py-4 rounded shadow-lg shadow-red-900/40">
-      ⚔ VIEW CHARACTER PROFILE ⚔
+<div class="section-divider"></div>
+
+<!-- ==================== CTA ==================== -->
+<section id="join" class="relative py-32 px-6 overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0" style="background: linear-gradient(135deg, #1a0505 0%, #0a0202 40%, #0a0a0a 100%);"></div>
+  <!-- Pulsing ambient glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(220,38,38,0.06), transparent); filter: blur(60px); animation: glow-pulse 4s ease-in-out infinite;"></div>
+
+  <!-- CTA images -->
+  <img src="assets/cta.png" alt="" class="absolute left-4 bottom-0 opacity-50 hidden lg:block pointer-events-none" style="max-height: 320px; bottom: -10px; filter: drop-shadow(0 0 40px rgba(220,38,38,0.25));">
+  <img src="assets/cta.png" alt="" class="absolute right-4 bottom-0 opacity-10 scale-x-[-1] hidden lg:block pointer-events-none" style="max-height: 320px; bottom: -10px; filter: hue-rotate(90deg);">
+
+  <div class="relative max-w-3xl mx-auto text-center reveal">
+    <span class="text-sm font-bold tracking-[0.3em] mb-6 block" style="color:var(--crimson)">JOIN THE ADVENTURE</span>
+    <h2 class="font-display text-4xl sm:text-6xl mb-6">
+      Discover More About <span class="gradient-text">Ninjago</span>
+    </h2>
+    <p class="text-gray-400 mb-10 text-lg max-w-xl mx-auto leading-relaxed">
+      Learn about the heroes, villains, dragons, realms, and stories that make the Ninjago universe unforgettable.
+    </p>
+    <a href="#karakter" class="btn-premium text-base px-10 py-4">
+      ⚔ VIEW CHARACTER PROFILES ⚔
     </a>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-black border-t border-white/5 py-10 px-6">
-  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded flex items-center justify-center font-display text-lg" style="background:var(--crimson)">SN</div>
-      <span class="font-display text-xl tracking-wider">NINJA <span style="color:var(--crimson)">GO</span></span>
+<!-- ==================== FOOTER ==================== -->
+<footer class="relative bg-black">
+  <!-- Gradient top line -->
+  <div class="h-[2px]" style="background: linear-gradient(90deg, transparent 5%, var(--crimson) 30%, var(--gold) 50%, var(--crimson) 70%, transparent 95%);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 py-14">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Logo & desc -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center font-display text-xl" style="background: linear-gradient(135deg, var(--crimson), #991b1b); box-shadow: 0 0 20px rgba(220,38,38,0.2);">SN</div>
+          <span class="font-display text-2xl tracking-wider">NINJA <span style="color:var(--crimson)">GO</span></span>
+        </div>
+        <p class="text-gray-500 text-sm leading-relaxed max-w-sm">
+          Fan-made website dedicated to celebrating the world of Ninjago. Explore characters, realms, and stories.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="font-display text-lg tracking-wider mb-4" style="color:var(--crimson)">NAVIGASI</h3>
+        <ul class="space-y-2.5 list-none p-0">
+          <li><a href="#beranda" class="text-gray-500 hover:text-white transition text-sm no-underline">Beranda</a></li>
+          <li><a href="#karakter" class="text-gray-500 hover:text-white transition text-sm no-underline">Karakter</a></li>
+          <li><a href="#dunia" class="text-gray-500 hover:text-white transition text-sm no-underline">Dunia</a></li>
+          <li><a href="#join" class="text-gray-500 hover:text-white transition text-sm no-underline">Kontak</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h3 class="font-display text-lg tracking-wider mb-4" style="color:var(--crimson)">CONNECT</h3>
+        <div class="flex gap-3">
+          <a href="#" class="social-icon no-underline" aria-label="YouTube">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" class="social-icon no-underline" aria-label="Instagram">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="#" class="social-icon no-underline" aria-label="X / Twitter">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
-   
-    <p class="text-xs text-gray-500">© 2026 NINJAGO BY HASBY WALIY RAMADHAN.</p>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/5 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-gray-600">© 2026 NINJAGO BY HASBY WALIY RAMADHAN.</p>
+      <p class="text-xs text-gray-600 flex items-center gap-1">Made with <span style="color: var(--crimson);">❤</span> for Ninjago fans</p>
+    </div>
   </div>
 </footer>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+  // ========== SCROLL REVEAL ==========
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ========== EMBER PARTICLES ==========
+  const particlesContainer = document.getElementById('particles');
+  function createEmber() {
+    if (!particlesContainer) return;
+    const ember = document.createElement('div');
+    ember.classList.add('ember');
+    ember.style.left = Math.random() * 100 + '%';
+    ember.style.bottom = '-10px';
+    const size = Math.random() * 4 + 2;
+    ember.style.width = size + 'px';
+    ember.style.height = size + 'px';
+    ember.style.animationDuration = (Math.random() * 6 + 5) + 's';
+    ember.style.opacity = Math.random() * 0.6 + 0.2;
+    particlesContainer.appendChild(ember);
+    setTimeout(() => { if (ember.parentNode) ember.remove(); }, 11000);
+  }
+  // Create initial batch
+  for (let i = 0; i < 6; i++) setTimeout(createEmber, i * 200);
+  setInterval(createEmber, 500);
+
+  // ========== NAVBAR SCROLL EFFECT ==========
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (scrollY > 80) {
+      navbar.classList.add('navbar-scrolled');
+    } else {
+      navbar.classList.remove('navbar-scrolled');
+    }
+    lastScroll = scrollY;
+  }, { passive: true });
+
+  // ========== SMOOTH SCROLL ==========
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // ========== MOBILE MENU ==========
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  function closeMobileMenu() {
+    hamburger.classList.remove('active');
+    mobileNav.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function openMobileMenu() {
+    hamburger.classList.add('active');
+    mobileNav.classList.add('open');
+    mobileOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
+  });
+  mobileOverlay.addEventListener('click', closeMobileMenu);
+
+  // ========== ACTIVE NAV HIGHLIGHT ==========
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link-line');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY + 150;
+    let currentId = '';
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (scrollY >= top && scrollY < top + height) {
+        currentId = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active', 'text-white');
+      link.classList.add('text-gray-400');
+      if (link.getAttribute('href') === '#' + currentId) {
+        link.classList.add('active', 'text-white');
+        link.classList.remove('text-gray-400');
+      }
+    });
+  }, { passive: true });
+</script>
 
 </body>
 </html>
